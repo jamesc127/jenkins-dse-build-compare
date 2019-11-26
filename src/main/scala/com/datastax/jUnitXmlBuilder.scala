@@ -8,8 +8,8 @@ import scala.collection.mutable.ArrayBuffer
 
 class jUnitXmlBuilder {
 
-//  val config = ConfigFactory.load()
-  val config: Config = ConfigFactory.parseFileAnySyntax(new File("./src/main/resources/stdevcheck.json"))
+  val config: Config = ConfigFactory.load()
+//  val config: Config = ConfigFactory.parseFileAnySyntax(new File("./src/main/resources/stdevcheck.json"))
   val testcases: Array[AnyRef] = config.getObjectList("testsuite.testcase").toArray
   var queryStructureArray: ArrayBuffer[QueryStructure] = ArrayBuffer[QueryStructure]()
 

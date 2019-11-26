@@ -8,8 +8,8 @@ import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
 
 object BuildCompare extends App {
-//  val config      = ConfigFactory.load()
-  val config      = ConfigFactory.parseFileAnySyntax(new File("./src/main/resources/stdevcheck.json"))
+  val config      = ConfigFactory.load()
+//  val config      = ConfigFactory.parseFileAnySyntax(new File("./src/main/resources/stdevcheck.json"))
   val build       = config.getInt("jenkins.build")
   val grafana     = new httpClient
   val bMath       = new BuildMath
@@ -20,7 +20,7 @@ object BuildCompare extends App {
   var metricArray = ArrayBuffer[BigDecimal]()
 
   case class dseInsert(build: Int, time: Long, metric: String, kind: String, value: BigDecimal)
-  implicit val formats = DefaultFormats
+  implicit val formats: DefaultFormats.type = DefaultFormats
   def longToTimestamp(timeInMillis: BigInt)= timeInMillis.toLong * 1000L
 
   val queries = XmlBuilder.buildQueryObjects()

@@ -1,0 +1,76 @@
+{
+  "testsuite" :
+  {
+    "name"      : "sims.address.cql.ValidateAddressSequentialSimulation",
+    "testcase"  :
+    [
+      {
+        "name"        : "P95 DC1",
+        "query"       : "avg(NinetyFive_Percentile%7Bresult%3D%22ok%22%2Cdc%3D%22dc1%22%7D)",
+        "metric"      : "DC1: Number of P95 measurements above stdev does not exceed defined percentage.",
+        "successtext" : "The actual percentage of measurements above stdev was ",
+        "failtype"    : "P95 above stdev threshold exceeded.",
+        "failtext"    : "The actual percentage of measurements above stdev was ",
+        "abovestdev"  : true
+      },
+      {
+        "name"        : "P95 DC2",
+        "query"       : "avg(NinetyFive_Percentile%7Bresult%3D%22ok%22%2Cdc%3D%22dc2%22%7D)",
+        "metric"      : "DC2: Number of P95 measurements above stdev does not exceed defined percentage.",
+        "successtext" : "The actual percentage of measurements above stdev was ",
+        "failtype"    : "P95 above stdev threshold exceeded.",
+        "failtext"    : "The actual percentage of measurements above stdev was ",
+        "abovestdev"  : true
+      },
+      {
+        "name"        : "Number of Business Transactions DC1",
+        "query"       : "sum(Business_Transaction_Count%7Bdc%3D%22dc1%22%7D)",
+        "metric"      : "DC1: Number of transactions/sec measurements below stdev does not exceed defined percentage.",
+        "successtext" : "The actual percentage of Business Transactions below stdev was ",
+        "failtype"    : "Transactions/sec below stdev exceeded.",
+        "failtext"    : "The actual percentage of Business Transactions below stdev was ",
+        "abovestdev"  : false
+      },
+      {
+        "name"        : "Number of Business Transactions DC2",
+        "query"       : "sum(Business_Transaction_Count%7Bdc%3D%22dc2%22%7D)",
+        "metric"      : "DC2: Number of transactions/sec measurements below stdev does not exceed defined percentage.",
+        "successtext" : "The actual percentage of Business Transactions below stdev was ",
+        "failtype"    : "Transactions/sec below stdev exceeded.",
+        "failtext"    : "The actual percentage of Business Transactions below stdev was ",
+        "abovestdev"  : false
+      }
+    ]
+  },
+  "grafana"     :
+  {
+    "scheme"          : "http://",
+    "host"            : "ec2-3-82-7-165.compute-1.amazonaws.com",
+    "port"            : 8080,
+    "path"            : "/api/datasources/proxy/1/api/v1/query_range",
+    "start-time"      : 1574288743,
+    "end-time"        : 1574288898,
+    "step"            : 15
+  },
+  "dse"         :
+  {
+    "host"            : "ec2-3-88-67-35.compute-1.amazonaws.com",
+    "port"            : 9042,
+    "username"        : "username",
+    "password"        : "password"
+  },
+  "jenkins"     :
+  {
+    "build"           : 171,
+    "baseline"        : 61,
+    "stdevtolerance"  : 0.90,
+    "xmlfilepath"     : "./src/main/resources/"
+  },
+  "jdbc"        :
+  {
+    "usejdbc"         : false,
+    "host"            : "jdbc:oracle:thin:@localhost:1521:xe",
+    "username"        : "user",
+    "password"        : "password"
+  }
+}
