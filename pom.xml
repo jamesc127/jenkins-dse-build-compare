@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.datastax</groupId>
   <artifactId>jenkins-dse-build-compare</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1</version>
   <name>${project.artifactId}</name>
   <description>My wonderful scala app</description>
-  <inceptionYear>2018</inceptionYear>
+  <inceptionYear>2019</inceptionYear>
   <licenses>
     <license>
       <name>My License</name>
@@ -79,7 +79,13 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub jamesc127 Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/jamesc127/jenkins-dse-build-compare</url>
+    </repository>
+  </distributionManagement>
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
